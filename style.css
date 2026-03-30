@@ -1,0 +1,22 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body { height: 100vh; display: flex; flex-direction: column; font-family: Georgia, serif; }
+
+#wall {
+    flex: 1;
+    background: #f0e6d3;
+    position: relative;
+}
+
+#table {
+    height: 40%;
+    background: #a0693a;
+    position: relative;
+}
+
+.label {
+    position: absolute;
+    top: 8px; left: 10px;
+    font-size: 11px;
+    color: rgba(0,0,0,0.25)
+}
