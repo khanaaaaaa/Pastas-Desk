@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pasta's Table</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div id="wall">
+    <span class="zone-label">Wall</span>
+  </div>
+
+  <div id="table">
+    <span class="zone-label">Table</span>
+  </div>
+
+  <!-- Widgets Tray -->
+  <div id="tray">
+    <button onclick="spawnWidget('pomodoro')">Pomodoro</button>
+    <button onclick="spawnWidget('note')">Note</button>
+    <button onclick="spawnWidget('clock')">Clock</button>
+  </div>
+
+  <script src="widgets.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
