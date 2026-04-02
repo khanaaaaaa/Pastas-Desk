@@ -1,6 +1,6 @@
 function spawnNote() {
     const w = makeWidget('note', 'Note', 200, 30);
-    const ta = document.ccreateElement('textarea');
+    const ta = document.createElement('textarea');
     ta.className = 'note-area';
     ta.placeholder = 'Write something...';
 

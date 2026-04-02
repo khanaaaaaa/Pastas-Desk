@@ -7,7 +7,7 @@ function spawnClock() {
     const date = document.createElement('div');
     date.className = 'clock-date';
 
-    function updte() { 
+    function update() { 
         const now = new Date();
         time.textContent = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
         date.textContent = now.toLocaleDateString([], { weekday: 'long', month: 'short', day: 'numeric' });

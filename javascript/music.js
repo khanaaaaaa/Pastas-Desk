@@ -21,9 +21,9 @@ function spawnMusic() {
     prev.textContent = '⏮';
 
     const play = document.createElement('button');
-    textContent = '▶️';
+    play.textContent = '▶️';
 
-    const next = document.createElement('input');
+    const next = document.createElement('button');
     next.textContent = '⏭';
 
     const progress = document.createElement('input');
@@ -68,10 +68,10 @@ function makeWidget(id, title, x, y) {
     t.className = 'widget-title';
     t.textContent = title;
 
-    const close = documentment.createElement('button');
+    const close = document.createElement('button');
     close.className = 'widget-close';
     close.textContent = '✕';
-    close.onClick = () => w.remove();
+    close.onclick = () => w.remove();
 
     w.append(t, close);
     return w;

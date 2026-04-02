@@ -1,0 +1,110 @@
+.widget {
+    position: absolute;
+    background: linear-gradient(145deg, #fffaf4, #fdf0dc);
+    border: 2px solid #c07a3a;
+    border-radius: 8px;
+    padding: 14px 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.8);
+    pointer-events: all;
+    min-width: 160px;
+    cursor: move;
+    user-select: none;
+}
+
+.widget-title {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #a0622a;
+    margin-bottom: 10px;
+}
+
+.widget-close {
+    position: absolute;
+    top: 6px; right: 8px;
+    background: none;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    color: #c07a3a;
+    line-height: 1;
+}
+
+.widget-close:hover { color: #8b3a10; }
+
+.pomodoro-time {
+    font-size: 36px;
+    text-align: center;
+    color: #5c2e05;
+    letter-spacing: 2px;
+    margin: 6px 0;
+}
+
+.pomodoro-controls { display: flex; gap: 8px; justify-content: center; margin-top: 8px; }
+
+.pomodoro-controls button {
+    padding: 5px 14px;
+    border: 1px solid #c07a3a;
+    border-radius: 999px;
+    background: #c8845a;
+    color: #fff;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.pomodoro-controls button:hover { background: #a85e30; }
+
+.note-area {
+    width: 180px;
+    height: 100px;
+    border: 1px solid #d4a574;
+    border-radius: 4px;
+    background: #fffdf8;
+    padding: 6px;
+    font-family: Georgia, serif;
+    font-size: 13px;
+    resize: none;
+    color: #3a1e08;
+}
+
+.clock-time {
+    font-size: 32px;
+    text-align: center;
+    color: #5c2e08;
+    letter-spacing: 3px;
+}
+
+.clock-date {
+    font-size: 11px;
+    text-align: center;
+    color: #a0622a;
+    margin-top: 4px;
+    letter-spacing: 1px;
+}
+
+.music-controls { display: flex; gap: 10px; align-items: center; justify-content: center; }
+
+.music-controls button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    transition: transform 0.15s;
+}
+
+.music-controls button:hover { transform: scale(1.2); }
+
+.music-label {
+    font-size: 11px;
+    text-align: center;
+    color: #a0622a;
+    margin-top: 6px;
+    letter-spacing: 1px;
+}
+
+.music-progress {
+    width: 100%;
+    margin-top: 8px;
+    accent-color: #c07a3a;
+}

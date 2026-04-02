@@ -3,24 +3,42 @@
 <head>
   <meta charset="UTF-8" />
   <title>Pasta's Table</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/wall.css" />
+  <link rel="stylesheet" href="css/table.css" />
+  <link rel="stylesheet" href="css/tray.css" />
+  <link rel="stylesheet" href="css/widgets.css" />
 </head>
 <body>
 
   <div id="wall">
-    <div class="painting"></div>
+    <div class="painting">🍝</div>
+    <div class="shelf">
+      <span class="shelf-item">📚</span>
+      <span class="shelf-item">🕯️</span>
+      <span class="shelf-item">🪴</span>
+    </div>
   </div>
+
+  <div id="floor-edge"></div>
 
   <div id="table">
     <span class="zone-label">Table</span>
-  </div>
-  <div id="tray">
-    <button onclick="spawnWidget('pomodoro')">Pomodoro</button>
-    <button onclick="spawnWidget('note')">Note</button>
-    <button onclick="spawnWidget('clock')">Clock</button>
+    <div id="widgets-container"></div>
   </div>
 
-  <script src="widgets.js"></script>
-  <script src="main.js"></script>
+  <div id="tray">
+    <button onclick="spawnPomodoro()">Pomodoro</button>
+    <button onclick="spawnNote()">Note</button>
+    <button onclick="spawnClock()">Clock</button>
+    <button onclick="spawnMusic()">Music</button>
+    <button onclick="toggleTheme()">Theme</button>
+    <button onclick="clearTable()">Clear</button>
+  </div>
+
+  <script src="javascript/pomodoro.js"></script>
+  <script src="javascript/notes.js"></script>
+  <script src="javascript/clock.js"></script>
+  <script src="javascript/music.js"></script>
 </body>
 </html>

@@ -1,0 +1,23 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: Georgia, serif;
+    overflow: hidden;
+    transition: filter 0.4s;
+}
+
+body.dark #wall {
+    background: radial-gradient(ellipse at 30% 20%, #2a1f14 0%, transparent 60%),
+    linear-gradient(160deg, #1e1208 0%, #2e1c06 100%);
+}
+
+body.dark #table {
+    background: linear-gradient(175deg, #3a2010 0%, #1e0e04 100%);
+}
+
+body.dark #tray {
+    background: linear-gradient(180deg, #0a0502, #120804);
+}

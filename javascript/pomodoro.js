@@ -1,5 +1,5 @@
 function spawnPomodoro() {
-    const w = makeWidget('pomodoro', 'Pomodoero', 60, 20);
+    const w = makeWidget('pomodoro', 'Pomodoro', 60, 20);
     let mins = 25, secs = 0, running = false, interval = null;
 
     const display = document.createElement('div');
