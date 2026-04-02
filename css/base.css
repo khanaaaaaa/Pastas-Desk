@@ -6,18 +6,35 @@ body {
     flex-direction: column;
     font-family: Georgia, serif;
     overflow: hidden;
-    transition: filter 0.4s;
+    transition: background 0.4s;
 }
 
 body.dark #wall {
-    background: radial-gradient(ellipse at 30% 20%, #2a1f14 0%, transparent 60%),
-    linear-gradient(160deg, #1e1208 0%, #2e1c06 100%);
+    background: linear-gradient(160deg, #1a0e14 0%, #2a1520 100%);
 }
-
 body.dark #table {
-    background: linear-gradient(175deg, #3a2010 0%, #1e0e04 100%);
+    background: linear-gradient(175deg, #2e1a22 0%, #1a0e14 100%);
 }
-
-body.dark #tray {
-    background: linear-gradient(180deg, #0a0502, #120804);
+body.dark #basket {
+    background: linear-gradient(180deg, #2e1a22, #1a0e14);
+    border-color: #6b3a50;
+}
+body.dark #basket button {
+    background: linear-gradient(145deg, #6b3a50, #4a2438);
+    color: #ffd6e8;
+}
+body.dark .widget {
+    background: linear-gradient(145deg, #2e1a22, #1a0e14);
+    border-color: #c4728a;
+    color: #ffd6e8;
+}
+body.dark .widget-title,
+body.dark .clock-date,
+body.dark .music-label  { color: #f4a0bc; }
+body.dark .pomodoro-time,
+body.dark .clock-time   { color: #ffd6e8; }
+body.dark .note-area {
+    background: #2e1a22;
+    color: #ffd6e8;
+    border-color: #c4728a;
 }

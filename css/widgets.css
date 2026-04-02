@@ -1,10 +1,10 @@
 .widget {
     position: absolute;
-    background: linear-gradient(145deg, #fffaf4, #fdf0dc);
-    border: 2px solid #c07a3a;
-    border-radius: 8px;
+    background: linear-gradient(145deg, #fff5f8, #ffe8f0);
+    border: 2px solid #e8a0b8;
+    border-radius: 12px;
     padding: 14px 16px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.8);
+    box-shadow: 0 8px 24px rgba(220,100,140,0.2), inset 0 1px 0 rgba(255,255,255,0.9);
     pointer-events: all;
     min-width: 160px;
     cursor: move;
@@ -15,8 +15,9 @@
     font-size: 10px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: #a0622a;
+    color: #c4607a;
     margin-bottom: 10px;
+    font-style: italic;
 }
 
 .widget-close {
@@ -26,16 +27,17 @@
     border: none;
     font-size: 14px;
     cursor: pointer;
-    color: #c07a3a;
+    color: #e8a0b8;
     line-height: 1;
+    transition: color 0.15s;
 }
+.widget-close:hover { color: #c4607a; }
 
-.widget-close:hover { color: #8b3a10; }
-
+/* Pomodoro */
 .pomodoro-time {
     font-size: 36px;
     text-align: center;
-    color: #5c2e05;
+    color: #7a2040;
     letter-spacing: 2px;
     margin: 6px 0;
 }
@@ -44,43 +46,44 @@
 
 .pomodoro-controls button {
     padding: 5px 14px;
-    border: 1px solid #c07a3a;
+    border: 1px solid #e8a0b8;
     border-radius: 999px;
-    background: #c8845a;
-    color: #fff;
+    background: linear-gradient(145deg, #ffc8dc, #f4a0b8);
+    color: #7a2040;
     font-size: 12px;
     cursor: pointer;
     transition: background 0.2s;
 }
+.pomodoro-controls button:hover { background: linear-gradient(145deg, #ffb0cc, #e890a8); }
 
-.pomodoro-controls button:hover { background: #a85e30; }
-
+/* Note */
 .note-area {
     width: 180px;
     height: 100px;
-    border: 1px solid #d4a574;
-    border-radius: 4px;
-    background: #fffdf8;
+    border: 1px solid #f0b8cc;
+    border-radius: 8px;
+    background: #fff8fa;
     padding: 6px;
     font-family: Georgia, serif;
     font-size: 13px;
     resize: none;
-    color: #3a1e08;
+    color: #7a2040;
 }
 
+/* Clock */
 .clock-time {
     font-size: 32px;
     text-align: center;
-    color: #5c2e08;
+    color: #7a2040;
     letter-spacing: 3px;
 }
-
 .clock-date {
     font-size: 11px;
     text-align: center;
-    color: #a0622a;
+    color: #c4607a;
     margin-top: 4px;
     letter-spacing: 1px;
+    font-style: italic;
 }
 
 .music-controls { display: flex; gap: 10px; align-items: center; justify-content: center; }
@@ -92,19 +95,19 @@
     cursor: pointer;
     transition: transform 0.15s;
 }
-
 .music-controls button:hover { transform: scale(1.2); }
 
 .music-label {
     font-size: 11px;
     text-align: center;
-    color: #a0622a;
+    color: #c4607a;
     margin-top: 6px;
     letter-spacing: 1px;
+    font-style: italic;
 }
 
 .music-progress {
     width: 100%;
     margin-top: 8px;
-    accent-color: #c07a3a;
+    accent-color: #e8a0b8;
 }

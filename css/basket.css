@@ -1,0 +1,61 @@
+#basket {
+    position: fixed;
+    right: 0; top: 50%;
+    transform: translateY(-50%);
+    width: 110px;
+    background: linear-gradient(180deg, #fff0f5, #fadadd);
+    border: 2px solid #e8a0b8;
+    border-right: none;
+    border-radius: 16px 0 0 16px;
+    padding: 14px 10px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    box-shadow: -4px 0 20px rgba(220,100,140,0.15);
+}
+
+#basket-handle {
+    width: 50px; height: 18px;
+    border: 3px  solid #e8a0b8;
+    border-bottom: none;
+    border-radius: 30px 30px 0 0;
+    margin-bottom: 2px;
+}
+
+.basket-title {
+    font-size: 12px;
+    color: #c4607a;
+    letter-spacing: 1px;
+    font-style: italic;
+    margin-bottom: 2px;
+}
+
+.basket-divider {
+    width: 80%;
+    border: none;
+    border-top: 1px dashed #e8a0b8;
+    margin: 2px 0;
+}
+
+#basket button {
+    width: 100%;
+    padding: 7px 6px;
+    border-radius: 999px;
+    background: linear-gradient(145deg, #ffc8dc, #f4a0b8);
+    color: #7a2040;
+    font-family: Georgia, serif;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(220,100,140,0.2), inset 0 1px 0 rgba(255,255,255,0.5);
+    text-align: center;
+}
+
+#basket button:hover {
+    background: linear-gradient(145deg, #ffb0cc, #f090a8);
+    transform: translateX(-3px);
+    box-shadow: 0 4px 12px rgba(220,100,140,0.3);
+}
+
+#basket button:active { transform: translateX(0); }

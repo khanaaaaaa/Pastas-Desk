@@ -2,38 +2,42 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Pasta's Table</title>
+  <title>Pasta's Table 🌸</title>
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/wall.css" />
   <link rel="stylesheet" href="css/table.css" />
-  <link rel="stylesheet" href="css/tray.css" />
+  <link rel="stylesheet" href="css/basket.css" />
   <link rel="stylesheet" href="css/widgets.css" />
 </head>
 <body>
 
   <div id="wall">
-    <div class="painting">🍝</div>
+    <div class="painting">🌸</div>
     <div class="shelf">
-      <span class="shelf-item">📚</span>
+      <span class="shelf-item">🧸</span>
       <span class="shelf-item">🕯️</span>
-      <span class="shelf-item">🪴</span>
+      <span class="shelf-item">🌷</span>
     </div>
   </div>
 
   <div id="floor-edge"></div>
 
   <div id="table">
-    <span class="zone-label">Table</span>
+    <span class="zone-label">✨ your desk</span>
     <div id="widgets-container"></div>
   </div>
 
-  <div id="tray">
-    <button onclick="spawnPomodoro()">Pomodoro</button>
-    <button onclick="spawnNote()">Note</button>
-    <button onclick="spawnClock()">Clock</button>
-    <button onclick="spawnMusic()">Music</button>
-    <button onclick="toggleTheme()">Theme</button>
-    <button onclick="clearTable()">Clear</button>
+
+  <div id="basket">
+    <div id="basket-handle"></div>
+    <p class="basket-title">🧺 basket</p>
+    <button onclick="spawnPomodoro()">⏱ pomodoro</button>
+    <button onclick="spawnNote()">📝 note</button>
+    <button onclick="spawnClock()">🕐 clock</button>
+    <button onclick="spawnMusic()">🎵 music</button>
+    <hr class="basket-divider" />
+    <button onclick="toggleTheme()">🌙 theme</button>
+    <button onclick="clearTable()">🗑 clear</button>
   </div>
 
   <script src="javascript/pomodoro.js"></script>
