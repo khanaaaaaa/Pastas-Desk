@@ -35,20 +35,45 @@
 }
 .widget-close:hover { background: #e8c870; }
 
-/* pomodoro */
+/* ── pomodoro ── */
+.pom-mode {
+    font-family: 'Caveat', cursive;
+    font-size: 12px;
+    text-align: center;
+    color: #9a6830;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+
 .pomodoro-time {
     font-family: 'Playfair Display', serif;
     font-size: 42px;
     text-align: center;
     color: #5a3010;
     letter-spacing: 2px;
-    margin: 4px 0 2px;
+    margin: 2px 0;
 }
 
-.pomodoro-controls { display: flex; gap: 6px; justify-content: center; margin-top: 8px; }
+.pom-sessions {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    margin: 4px 0 6px;
+}
 
+.pom-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    border: 1.5px solid #b08840;
+    background: transparent;
+    display: inline-block;
+}
+.pom-dot.filled { background: #b08840; }
+
+.pomodoro-controls { display: flex; gap: 5px; justify-content: center; margin-top: 4px; }
 .pomodoro-controls button {
-    padding: 5px 12px;
+    padding: 4px 10px;
     border: 1px solid #9a7030;
     border-radius: 3px;
     background: #d4b06a;
@@ -59,34 +84,61 @@
 }
 .pomodoro-controls button:hover { background: #c09848; }
 
-/* note */
+/* ── note ── */
+.note-color-strip {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 5px;
+}
+.note-color-dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,0.15);
+    cursor: pointer;
+    padding: 0;
+}
+.note-color-dot:hover { transform: scale(1.3); }
+
 .note-area {
-    width: 190px;
-    height: 110px;
-    border: 1px solid #c8a050;
-    border-radius: 2px;
-    background:
-        repeating-linear-gradient(transparent, transparent 23px, #e8d090 23px, #e8d090 24px),
-        #fefae8;
-    padding: 4px 8px;
+    width: 100%; height: 90px;
+    border: none;
+    background: transparent;
+    background-image: repeating-linear-gradient(transparent, transparent 23px, rgba(160,140,0,0.2) 23px, rgba(160,140,0,0.2) 24px);
     font-family: 'Caveat', cursive;
     font-size: 15px;
     resize: none;
-    color: #3a2008;
+    color: #3a2e08;
     outline: none;
     line-height: 24px;
+    padding: 0 4px;
 }
-.note-area::placeholder { color: #b09050; }
+.note-area::placeholder { color: rgba(100,80,10,0.35); }
 
-/* music */
-.music-controls { display: flex; gap: 8px; align-items: center; justify-content: center; margin: 6px 0 4px; }
+/* ── wall note ── */
+.wall-note {
+    position: absolute;
+    width: 155px;
+    padding: 20px 10px 10px;
+    box-shadow: 3px 5px 0 rgba(0,0,0,0.15), 2px 8px 12px rgba(0,0,0,0.15);
+    border-radius: 2px;
+    cursor: move;
+    user-select: none;
+    z-index: 10;
+}
+.wall-note .widget-close { top: 5px; right: 6px; }
 
+/* ── music ── */
+.music-controls {
+    display: flex; gap: 6px;
+    align-items: center; justify-content: center;
+    margin: 6px 0 4px;
+}
 .music-controls button {
     background: none;
     border: 1px solid #b08840;
     border-radius: 3px;
-    padding: 4px 8px;
-    font-size: 13px;
+    padding: 3px 7px;
+    font-size: 12px;
     cursor: pointer;
     color: #5a3010;
 }
@@ -98,24 +150,55 @@
     text-align: center;
     color: #7a5020;
     margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 160px;
 }
 
-.music-progress { width: 100%; margin-top: 8px; accent-color: #9a7030; }
+.music-progress { width: 100%; margin-top: 6px; accent-color: #9a7030; }
 
-/* wall clock */
+.music-vol-row {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 4px;
+}
+.music-vol-icon {
+    font-size: 11px;
+    color: #9a6830;
+    flex-shrink: 0;
+}
+
+/* ── wall clock ── */
 #wall-clock {
     position: absolute;
-    top: 20px;
-    right: 160px;
+    top: 18px; right: 20px;
     cursor: move;
     user-select: none;
-    filter: drop-shadow(3px 5px 8px rgba(0,0,0,0.3));
+    z-index: 10;
+    filter: drop-shadow(4px 6px 12px rgba(0,0,0,0.35));
 }
 
-#wall-clock-date {
-    font-family: 'Caveat', cursive;
-    font-size: 11px;
-    color: #7a5020;
+/* ── generic wall widget — same as .widget ── */
+.wall-widget-item {
+    z-index: 10;
+    pointer-events: all;
+}
+
+/* ── quote ── */
+#wall-quote {
+    position: absolute;
+    bottom: 14px;
+    left: 50%;
+    margin-left: -140px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 12px;
+    color: rgba(80,45,10,0.5);
     text-align: center;
-    margin-top: 3px;
+    width: 280px;
+    cursor: move;
+    user-select: none;
+    pointer-events: all;
 }

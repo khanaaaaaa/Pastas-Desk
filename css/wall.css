@@ -33,24 +33,3 @@
     object-fit: cover;
 }
 
-.shelf {
-    position: absolute;
-    bottom: 28px;
-    left: 38%; /* not centered */
-    background: #9a6c38;
-    padding: 6px 24px 5px;
-    box-shadow: 0 5px 0 #6a4420, 2px 8px 14px rgba(0,0,0,0.2);
-}
-
-.shelf::after {
-    content: '';
-    position: absolute;
-    bottom: -10px; left: 0; right: 0;
-    height: 5px;
-    background: #6a4420;
-}
-
-.shelf-item {
-    font-size: 22px;
-    display: inline-block;
-}

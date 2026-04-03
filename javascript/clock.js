@@ -3,76 +3,125 @@ function spawnClock() {
 
     const w = document.createElement('div');
     w.id = 'wall-clock';
+    w.style.position = 'absolute';
+    w.style.top = '20px';
+    w.style.right = '20px';
+    w.style.left = 'auto';
+    w.style.cursor = 'move';
+    w.style.userSelect = 'none';
+    w.style.zIndex = '10';
+    w.style.filter = 'drop-shadow(4px 6px 12px rgba(0,0,0,0.35))';
 
-    const size = 110;
-    const cx = size / 2, cy = size / 2, r = 46;
+    const close = document.createElement('button');
+    close.className = 'widget-close';
+    close.textContent = '✕';
+    close.onclick = () => w.remove();
+    w.appendChild(close);
 
+    const S = 180, cx = 90, cy = 90, r = 68;
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svg.setAttribute('width', size);
-    svg.setAttribute('height', size);
-    svg.style.display = 'block';
+    svg.setAttribute('width', S);
+    svg.setAttribute('height', S);
+    svg.setAttribute('viewBox', `0 0 ${S} ${S}`);
 
-    let ticks = '';
-    for (let i = 0; i < 12; i++) {
-        const angle = (i / 12) * Math.PI * 2 - Math.PI / 2;
-        const x1 = cx + Math.cos(angle) * (r - 5);
-        const y1 = cy + Math.sin(angle) * (r - 5);
-        const x2 = cx + Math.cos(angle) * (r - 1);
-        const y2 = cy + Math.sin(angle) * (r - 1);
-        ticks += `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="#9a7030" stroke-width="${i % 3 === 0 ? 2 : 1}" />`;
+    function el(tag, attrs) {
+        const e = document.createElementNS('http://www.w3.org/2000/svg', tag);
+        Object.entries(attrs).forEach(([k, v]) => e.setAttribute(k, v));
+        return e;
     }
 
-    svg.innerHTML = `
-        <circle cx="${cx}" cy="${cy}" r="${r+5}" fill="#6a4018" />
-        <circle cx="${cx}" cy="${cy}" r="${r+2}" fill="#b08030" />
-        <circle cx="${cx}" cy="${cy}" r="${r}"   fill="#fdf5e0" />
-        ${ticks}
-        <line id="wc-hr"  x1="${cx}" y1="${cy}" x2="${cx}" y2="${cy-24}" stroke="#3a1e08" stroke-width="3" stroke-linecap="round" />
-        <line id="wc-min" x1="${cx}" y1="${cy}" x2="${cx}" y2="${cy-34}" stroke="#5a3010" stroke-width="2" stroke-linecap="round" />
-        <line id="wc-sec" x1="${cx}" y1="${cy}" x2="${cx}" y2="${cy-38}" stroke="#b03010" stroke-width="1" stroke-linecap="round" />
-        <circle cx="${cx}" cy="${cy}" r="3" fill="#3a1e08" />
-    `;
+    // wood rings
+    svg.appendChild(el('circle', { cx, cy, r: r + 10, fill: '#6a3e10' }));
+    svg.appendChild(el('circle', { cx, cy, r: r + 6,  fill: '#9a6428' }));
+    svg.appendChild(el('circle', { cx, cy, r: r + 2,  fill: '#7a4e18' }));
+    // face
+    svg.appendChild(el('circle', { cx, cy, r, fill: '#fdf8ee' }));
+    // subtle face shadow at edge
+    svg.appendChild(el('circle', { cx, cy, r, fill: 'none', stroke: '#e8d8b8', 'stroke-width': '1' }));
 
-    const dateLabel = document.createElement('div');
-    dateLabel.id = 'wall-clock-date';
+    // hour numbers
+    ['12','1','2','3','4','5','6','7','8','9','10','11'].forEach((n, i) => {
+        const a = (i / 12) * Math.PI * 2 - Math.PI / 2;
+        const nx = cx + Math.cos(a) * (r - 13);
+        const ny = cy + Math.sin(a) * (r - 13);
+        svg.appendChild(el('text', {
+            x: nx.toFixed(1), y: ny.toFixed(1),
+            'text-anchor': 'middle', 'dominant-baseline': 'central',
+            'font-family': 'Georgia, serif',
+            'font-size': i % 3 === 0 ? '10' : '7',
+            'font-weight': i % 3 === 0 ? 'bold' : 'normal',
+            fill: '#5a3010'
+        })).textContent = n;
+    });
+
+    // minute ticks
+    for (let i = 0; i < 60; i++) {
+        if (i % 5 === 0) continue;
+        const a = (i / 60) * Math.PI * 2 - Math.PI / 2;
+        svg.appendChild(el('line', {
+            x1: (cx + Math.cos(a) * (r - 5)).toFixed(1),
+            y1: (cy + Math.sin(a) * (r - 5)).toFixed(1),
+            x2: (cx + Math.cos(a) * (r - 2)).toFixed(1),
+            y2: (cy + Math.sin(a) * (r - 2)).toFixed(1),
+            stroke: '#c8a878', 'stroke-width': '0.8'
+        }));
+    }
+
+    // hour ticks
+    for (let i = 0; i < 12; i++) {
+        const a = (i / 12) * Math.PI * 2 - Math.PI / 2;
+        svg.appendChild(el('line', {
+            x1: (cx + Math.cos(a) * (r - 7)).toFixed(1),
+            y1: (cy + Math.sin(a) * (r - 7)).toFixed(1),
+            x2: (cx + Math.cos(a) * (r - 2)).toFixed(1),
+            y2: (cy + Math.sin(a) * (r - 2)).toFixed(1),
+            stroke: '#9a7040', 'stroke-width': '1.5'
+        }));
+    }
+
+    // hands — all pointing up (12 o'clock) by default, rotated via transform
+    const hrHand  = el('line', { x1: cx, y1: cy, x2: cx, y2: cy - 40, stroke: '#2a1408', 'stroke-width': '3.5', 'stroke-linecap': 'round' });
+    const minHand = el('line', { x1: cx, y1: cy, x2: cx, y2: cy - 56, stroke: '#4a2c10', 'stroke-width': '2',   'stroke-linecap': 'round' });
+    const secHand = el('line', { x1: cx, y1: cy + 14, x2: cx, y2: cy - 60, stroke: '#a02010', 'stroke-width': '1', 'stroke-linecap': 'round' });
+
+    svg.append(hrHand, minHand, secHand);
+
+    // center pin
+    svg.appendChild(el('circle', { cx, cy, r: '4',   fill: '#2a1408' }));
+    svg.appendChild(el('circle', { cx, cy, r: '1.5', fill: '#c8a060' }));
+
+    w.appendChild(svg);
+    document.getElementById('wall').appendChild(w);
+
+    function rotateHand(hand, deg) {
+        hand.setAttribute('transform', `rotate(${deg.toFixed(3)},${cx},${cy})`);
+    }
 
     function update() {
         const now = new Date();
-        const h = now.getHours() % 12, m = now.getMinutes(), s = now.getSeconds();
-        const hA = ((h + m / 60) / 12) * 360 - 90;
-        const mA = ((m + s / 60) / 60) * 360 - 90;
-        const sA = (s / 60) * 360 - 90;
-
-        function setHand(id, deg, len) {
-            const a = deg * Math.PI / 180;
-            const el = svg.querySelector(id);
-            el.setAttribute('x2', (cx + Math.cos(a) * len).toFixed(1));
-            el.setAttribute('y2', (cy + Math.sin(a) * len).toFixed(1));
-        }
-
-        setHand('#wc-hr',  hA, 24);
-        setHand('#wc-min', mA, 34);
-        setHand('#wc-sec', sA, 38);
-        dateLabel.textContent = now.toLocaleDateString([], { weekday: 'short', month: 'short', day: 'numeric' });
+        const h = now.getHours() % 12;
+        const m = now.getMinutes();
+        const s = now.getSeconds();
+        rotateHand(hrHand,  ((h + m / 60) / 12) * 360);
+        rotateHand(minHand, ((m + s / 60) / 60) * 360);
+        rotateHand(secHand, (s / 60) * 360);
     }
 
     update();
     setInterval(update, 1000);
 
-    w.append(svg, dateLabel);
-    document.getElementById('wall').appendChild(w);
-
     let ox, oy;
     w.onmousedown = e => {
-        ox = e.clientX - w.offsetLeft;
-        oy = e.clientY - w.offsetTop;
+        if (e.target.tagName === 'BUTTON') return;
+        e.preventDefault();
+        const wr = document.getElementById('wall').getBoundingClientRect();
+        ox = e.clientX - (w.getBoundingClientRect().left - wr.left);
+        oy = e.clientY - (w.getBoundingClientRect().top  - wr.top);
         document.onmousemove = e => {
-            const wall = document.getElementById('wall');
-            const wr = wall.getBoundingClientRect();
-            const maxX = wr.width  - w.offsetWidth;
-            const maxY = wr.height - w.offsetHeight;
-            w.style.left = Math.min(maxX, Math.max(0, e.clientX - ox)) + 'px';
-            w.style.top  = Math.min(maxY, Math.max(0, e.clientY - oy)) + 'px';
+            const wr2 = document.getElementById('wall').getBoundingClientRect();
+            w.style.left  = Math.min(wr2.width  - w.offsetWidth,  Math.max(0, e.clientX - wr2.left - ox)) + 'px';
+            w.style.top   = Math.min(wr2.height - w.offsetHeight, Math.max(0, e.clientY - wr2.top  - oy)) + 'px';
+            w.style.right = 'auto';
         };
         document.onmouseup = () => { document.onmousemove = null; document.onmouseup = null; };
     };
