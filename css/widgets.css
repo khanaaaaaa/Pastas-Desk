@@ -35,7 +35,6 @@
 }
 .widget-close:hover { background: #e8c870; }
 
-/* ── pomodoro ── */
 .pom-mode {
     font-family: 'Caveat', cursive;
     font-size: 12px;
@@ -84,7 +83,6 @@
 }
 .pomodoro-controls button:hover { background: #c09848; }
 
-/* ── note ── */
 .note-color-strip {
     display: flex;
     gap: 4px;
@@ -114,7 +112,6 @@
 }
 .note-area::placeholder { color: rgba(100,80,10,0.35); }
 
-/* ── wall note ── */
 .wall-note {
     position: absolute;
     width: 155px;
@@ -127,7 +124,6 @@
 }
 .wall-note .widget-close { top: 5px; right: 6px; }
 
-/* ── music ── */
 .music-controls {
     display: flex; gap: 6px;
     align-items: center; justify-content: center;
@@ -170,7 +166,6 @@
     flex-shrink: 0;
 }
 
-/* ── wall clock ── */
 #wall-clock {
     position: absolute;
     top: 18px; right: 20px;
@@ -180,13 +175,11 @@
     filter: drop-shadow(4px 6px 12px rgba(0,0,0,0.35));
 }
 
-/* ── generic wall widget — same as .widget ── */
 .wall-widget-item {
     z-index: 10;
     pointer-events: all;
 }
 
-/* ── quote ── */
 #wall-quote {
     position: absolute;
     bottom: 14px;

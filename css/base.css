@@ -10,42 +10,16 @@ body {
     overflow: hidden;
 }
 
-body.dark #wall {
-    background: #16100a;
-}
-body.dark #floor-edge {
-    background: #2e1e0c;
-    box-shadow: none;
-}
-body.dark #table {
-    background: #1c1208;
-}
-body.dark #basket {
-    background: #1c1208;
-    border-color: #4a3018;
-}
-body.dark #basket button {
-    background: #2e1e0c;
-    color: #d4b07a;
-    border-color: #4a3018;
-    box-shadow: none;
-}
-body.dark #basket button:hover {
-    background: #3a2810;
-}
-body.dark .widget {
-    background: #221608;
-    border-color: #6a4820;
-    color: #d4b07a;
-    box-shadow: 3px 5px 18px rgba(0,0,0,0.5);
-}
+body.dark #wall { background: #16100a; }
+body.dark #floor-edge { background: #2e1e0c; box-shadow: none; }
+body.dark #table { background: #1c1208; }
+body.dark #basket { background: #1c1208; border-color: #4a3018; }
+body.dark #basket button { background: #2e1e0c; color: #d4b07a; border-color: #4a3018; box-shadow: none; }
+body.dark #basket button:hover { background: #3a2810; }
+body.dark .widget { background: #221608; border-color: #6a4820; color: #d4b07a; box-shadow: 3px 5px 18px rgba(0,0,0,0.5); }
 body.dark .widget-title  { color: #b08040; border-bottom-color: #4a3018; }
-body.dark .clock-date    { color: #8a6030; }
 body.dark .music-label   { color: #9a7040; }
 body.dark .pomodoro-time { color: #d4b07a; }
-body.dark .clock-time    { color: #d4b07a; }
 body.dark .note-area     { background: #1c1208; color: #d4b07a; border-color: #4a3018; }
 body.dark .zone-label    { color: rgba(180,130,60,0.3); }
-body.dark .shelf         { background: #2e1e0c; }
-body.dark .shelf::after  { background: #1c1208; }
 body.dark .painting      { border-color: #6a4820; box-shadow: 4px 6px 20px rgba(0,0,0,0.6); }

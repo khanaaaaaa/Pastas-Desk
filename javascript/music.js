@@ -65,7 +65,6 @@ function spawnMusic() {
     makeWallDraggable(w);
 }
 
-// ── Quote — wall, bottom center, auto-spawns ──
 function spawnQuote() {
     if (document.getElementById('wall-quote')) return;
     const quotes = [
@@ -85,9 +84,6 @@ function spawnQuote() {
     makeWallDraggable(w);
 }
 
-// ── Shared helpers ──
-
-// positions new wall widgets in a cascade so they don't stack
 function makeWallWidget(type) {
     const w = document.createElement('div');
     w.className = 'widget wall-widget-item';

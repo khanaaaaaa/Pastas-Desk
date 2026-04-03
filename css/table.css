@@ -14,7 +14,6 @@
     flex-shrink: 0;
 }
 
-/* single soft highlight at the top edge */
 #table::before {
     content: '';
     position: absolute;
@@ -34,7 +33,6 @@
     transform: rotate(-1deg);
 }
 
-/* desk decorations */
 .desk-obj {
     position: absolute;
     bottom: 0;

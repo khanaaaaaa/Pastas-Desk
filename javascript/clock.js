@@ -30,16 +30,12 @@ function spawnClock() {
         return e;
     }
 
-    // wood rings
     svg.appendChild(el('circle', { cx, cy, r: r + 10, fill: '#6a3e10' }));
     svg.appendChild(el('circle', { cx, cy, r: r + 6,  fill: '#9a6428' }));
     svg.appendChild(el('circle', { cx, cy, r: r + 2,  fill: '#7a4e18' }));
-    // face
     svg.appendChild(el('circle', { cx, cy, r, fill: '#fdf8ee' }));
-    // subtle face shadow at edge
     svg.appendChild(el('circle', { cx, cy, r, fill: 'none', stroke: '#e8d8b8', 'stroke-width': '1' }));
 
-    // hour numbers
     ['12','1','2','3','4','5','6','7','8','9','10','11'].forEach((n, i) => {
         const a = (i / 12) * Math.PI * 2 - Math.PI / 2;
         const nx = cx + Math.cos(a) * (r - 13);
@@ -54,7 +50,6 @@ function spawnClock() {
         })).textContent = n;
     });
 
-    // minute ticks
     for (let i = 0; i < 60; i++) {
         if (i % 5 === 0) continue;
         const a = (i / 60) * Math.PI * 2 - Math.PI / 2;
@@ -67,7 +62,6 @@ function spawnClock() {
         }));
     }
 
-    // hour ticks
     for (let i = 0; i < 12; i++) {
         const a = (i / 12) * Math.PI * 2 - Math.PI / 2;
         svg.appendChild(el('line', {
@@ -79,14 +73,11 @@ function spawnClock() {
         }));
     }
 
-    // hands — all pointing up (12 o'clock) by default, rotated via transform
     const hrHand  = el('line', { x1: cx, y1: cy, x2: cx, y2: cy - 40, stroke: '#2a1408', 'stroke-width': '3.5', 'stroke-linecap': 'round' });
     const minHand = el('line', { x1: cx, y1: cy, x2: cx, y2: cy - 56, stroke: '#4a2c10', 'stroke-width': '2',   'stroke-linecap': 'round' });
     const secHand = el('line', { x1: cx, y1: cy + 14, x2: cx, y2: cy - 60, stroke: '#a02010', 'stroke-width': '1', 'stroke-linecap': 'round' });
 
     svg.append(hrHand, minHand, secHand);
-
-    // center pin
     svg.appendChild(el('circle', { cx, cy, r: '4',   fill: '#2a1408' }));
     svg.appendChild(el('circle', { cx, cy, r: '1.5', fill: '#c8a060' }));
 
@@ -99,9 +90,7 @@ function spawnClock() {
 
     function update() {
         const now = new Date();
-        const h = now.getHours() % 12;
-        const m = now.getMinutes();
-        const s = now.getSeconds();
+        const h = now.getHours() % 12, m = now.getMinutes(), s = now.getSeconds();
         rotateHand(hrHand,  ((h + m / 60) / 12) * 360);
         rotateHand(minHand, ((m + s / 60) / 60) * 360);
         rotateHand(secHand, (s / 60) * 360);
