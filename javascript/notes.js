@@ -1,8 +1,9 @@
 function spawnNote() {
-    const w = makeWidget('note', 'Note', 200, 30);
+    const w = makeWidget('note');
+
     const ta = document.createElement('textarea');
     ta.className = 'note-area';
-    ta.placeholder = 'Write something...';
+    ta.placeholder = 'write here...';
 
     const key = 'note-' + Date.now();
     ta.oninput = () => localStorage.setItem(key, ta.value);

@@ -1,14 +1,14 @@
 const playlist = [
     { label: 'Lo-fi Chill', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3' },
-    { label: 'Jazz Vibes', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3' },
-    { label: 'Focus Flow', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3' },
-]
+    { label: 'Jazz Vibes',  url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3' },
+    { label: 'Focus Flow',  url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3' },
+];
 
 let trackIndex = 0;
 const audio = new Audio(playlist[0].url);
 
 function spawnMusic() {
-    const w = makeWidget('music', 'Music', 420, 30);
+    const w = makeWidget('music');
 
     const label = document.createElement('div');
     label.className = 'music-label';
@@ -18,13 +18,11 @@ function spawnMusic() {
     controls.className = 'music-controls';
 
     const prev = document.createElement('button');
-    prev.textContent = '⏮';
-
+    prev.textContent = '|◀';
     const play = document.createElement('button');
-    play.textContent = '▶️';
-
+    play.textContent = '▶';
     const next = document.createElement('button');
-    next.textContent = '⏭';
+    next.textContent = '▶|';
 
     const progress = document.createElement('input');
     progress.type = 'range'; progress.className = 'music-progress';
@@ -38,16 +36,14 @@ function spawnMusic() {
     }
 
     play.onclick = () => {
-        audio.paused ? (audio.play(), play.textContent = '⏸') : (audio.pause(), play.textContent = '▶️');
+        audio.paused ? (audio.play(), play.textContent = '⏸') : (audio.pause(), play.textContent = '▶');
     };
-
     prev.onclick = () => loadTrack(trackIndex - 1);
     next.onclick = () => loadTrack(trackIndex + 1);
 
     audio.ontimeupdate = () => {
         if (audio.duration) progress.value = (audio.currentTime / audio.duration) * 100;
     };
-
     progress.oninput = () => {
         audio.currentTime = (progress.value / 100) * audio.duration;
     };
@@ -58,22 +54,26 @@ function spawnMusic() {
     makeDraggable(w);
 }
 
-function makeWidget(id, title, x, y) {
+function makeWidget(type) {
     const w = document.createElement('div');
     w.className = 'widget';
-    w.style.left = x + 'px';
-    w.style.top = y + 'px';
 
-    const t = document.createElement('div');
-    t.className = 'widget-title';
-    t.textContent = title;
+    const table = document.getElementById('table');
+    const tr = table.getBoundingClientRect();
+    const offset = document.querySelectorAll('.widget').length * 20;
+    w.style.left = Math.max(10, (tr.width / 2) - 90 + offset) + 'px';
+    w.style.top  = Math.max(10, (tr.height / 2) - 60 + offset) + 'px';
+
+    const title = document.createElement('div');
+    title.className = 'widget-title';
+    title.textContent = type;
 
     const close = document.createElement('button');
     close.className = 'widget-close';
     close.textContent = '✕';
     close.onclick = () => w.remove();
 
-    w.append(t, close);
+    w.append(title, close);
     return w;
 }
 
@@ -89,5 +89,4 @@ function makeDraggable(el) {
 }
 
 function toggleTheme() { document.body.classList.toggle('dark'); }
-
-function clearTable() { document.getElementById('widgets-container').innerHTML = ''; }
+function clearTable()  { document.getElementById('widgets-container').innerHTML = ''; }

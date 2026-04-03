@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Pasta's Table 🌸</title>
+  <title>Pasta's Table</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Caveat:wght@400;600&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/wall.css" />
   <link rel="stylesheet" href="css/table.css" />
@@ -12,32 +15,33 @@
 <body>
 
   <div id="wall">
-    <div class="painting">🌸</div>
+    <div class="painting">
+      <img src="pic.jpg" alt="" />
+    </div>
     <div class="shelf">
-      <span class="shelf-item">🧸</span>
-      <span class="shelf-item">🕯️</span>
-      <span class="shelf-item">🌷</span>
+      <span class="shelf-item"></span>
+      <span class="shelf-item"></span>
+      <span class="shelf-item"></span>
     </div>
   </div>
 
   <div id="floor-edge"></div>
 
   <div id="table">
-    <span class="zone-label">✨ your desk</span>
+    <span class="zone-label">your desk</span>
     <div id="widgets-container"></div>
   </div>
 
-
   <div id="basket">
     <div id="basket-handle"></div>
-    <p class="basket-title">🧺 basket</p>
-    <button onclick="spawnPomodoro()">⏱ pomodoro</button>
-    <button onclick="spawnNote()">📝 note</button>
-    <button onclick="spawnClock()">🕐 clock</button>
-    <button onclick="spawnMusic()">🎵 music</button>
+    <p class="basket-title">basket</p>
+    <button onclick="spawnPomodoro()">pomodoro</button>
+    <button onclick="spawnNote()">note</button>
+    <button onclick="spawnClock()">clock</button>
+    <button onclick="spawnMusic()">music</button>
     <hr class="basket-divider" />
-    <button onclick="toggleTheme()">🌙 theme</button>
-    <button onclick="clearTable()">🗑 clear</button>
+    <button onclick="toggleTheme()">theme</button>
+    <button onclick="clearTable()">clear</button>
   </div>
 
   <script src="javascript/pomodoro.js"></script>

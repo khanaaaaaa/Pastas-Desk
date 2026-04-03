@@ -1,40 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Caveat:wght@400;600&family=Lato:wght@300;400&display=swap');
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    font-family: Georgia, serif;
+    font-family: 'Lato', sans-serif;
     overflow: hidden;
-    transition: background 0.4s;
 }
 
 body.dark #wall {
-    background: linear-gradient(160deg, #1a0e14 0%, #2a1520 100%);
+    background: #16100a;
+}
+body.dark #floor-edge {
+    background: #2e1e0c;
+    box-shadow: none;
 }
 body.dark #table {
-    background: linear-gradient(175deg, #2e1a22 0%, #1a0e14 100%);
+    background: #1c1208;
 }
 body.dark #basket {
-    background: linear-gradient(180deg, #2e1a22, #1a0e14);
-    border-color: #6b3a50;
+    background: #1c1208;
+    border-color: #4a3018;
 }
 body.dark #basket button {
-    background: linear-gradient(145deg, #6b3a50, #4a2438);
-    color: #ffd6e8;
+    background: #2e1e0c;
+    color: #d4b07a;
+    border-color: #4a3018;
+    box-shadow: none;
+}
+body.dark #basket button:hover {
+    background: #3a2810;
 }
 body.dark .widget {
-    background: linear-gradient(145deg, #2e1a22, #1a0e14);
-    border-color: #c4728a;
-    color: #ffd6e8;
+    background: #221608;
+    border-color: #6a4820;
+    color: #d4b07a;
+    box-shadow: 3px 5px 18px rgba(0,0,0,0.5);
 }
-body.dark .widget-title,
-body.dark .clock-date,
-body.dark .music-label  { color: #f4a0bc; }
-body.dark .pomodoro-time,
-body.dark .clock-time   { color: #ffd6e8; }
-body.dark .note-area {
-    background: #2e1a22;
-    color: #ffd6e8;
-    border-color: #c4728a;
-}
+body.dark .widget-title  { color: #b08040; border-bottom-color: #4a3018; }
+body.dark .clock-date    { color: #8a6030; }
+body.dark .music-label   { color: #9a7040; }
+body.dark .pomodoro-time { color: #d4b07a; }
+body.dark .clock-time    { color: #d4b07a; }
+body.dark .note-area     { background: #1c1208; color: #d4b07a; border-color: #4a3018; }
+body.dark .zone-label    { color: rgba(180,130,60,0.3); }
+body.dark .shelf         { background: #2e1e0c; }
+body.dark .shelf::after  { background: #1c1208; }
+body.dark .painting      { border-color: #6a4820; box-shadow: 4px 6px 20px rgba(0,0,0,0.6); }

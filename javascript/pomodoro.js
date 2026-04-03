@@ -1,5 +1,5 @@
 function spawnPomodoro() {
-    const w = makeWidget('pomodoro', 'Pomodoro', 60, 20);
+    const w = makeWidget('pomodoro');
     let mins = 25, secs = 0, running = false, interval = null;
 
     const display = document.createElement('div');
@@ -10,30 +10,30 @@ function spawnPomodoro() {
     controls.className = 'pomodoro-controls';
 
     const startBtn = document.createElement('button');
-    startBtn.textContent = '▶ Start';
+    startBtn.textContent = 'start';
 
     const resetBtn = document.createElement('button');
-    resetBtn.textContent = '↺ Reset';
+    resetBtn.textContent = 'reset';
 
     function tick() {
         if (secs === 0) {
-            if (mins === 0) { clearInterval(interval); running = false; startBtn.textContent = '▶ Start'; return; }
+            if (mins === 0) { clearInterval(interval); running = false; startBtn.textContent = 'start'; return; }
             mins--; secs = 59;
         } else secs--;
         display.textContent = `${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
     }
-        
+
     startBtn.onclick = () => {
         running = !running;
-        running ? (interval = setInterval(tick, 1000), startBtn.textContent = '⏸ Pause')
-                : (clearInterval(interval), startBtn.textContent = '▶ Start');
+        running ? (interval = setInterval(tick, 1000), startBtn.textContent = 'pause')
+                : (clearInterval(interval), startBtn.textContent = 'start');
     };
 
     resetBtn.onclick = () => {
         clearInterval(interval); running = false;
         mins = 25; secs = 0;
         display.textContent = '25:00';
-        startBtn.textContent = '▶ Start';
+        startBtn.textContent = 'start';
     };
 
     controls.append(startBtn, resetBtn);

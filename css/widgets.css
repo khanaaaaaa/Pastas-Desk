@@ -1,10 +1,10 @@
 .widget {
     position: absolute;
-    background: linear-gradient(145deg, #fff5f8, #ffe8f0);
-    border: 2px solid #e8a0b8;
-    border-radius: 12px;
-    padding: 14px 16px;
-    box-shadow: 0 8px 24px rgba(220,100,140,0.2), inset 0 1px 0 rgba(255,255,255,0.9);
+    background: #fdf5e0;
+    border: 1px solid #b08840;
+    border-radius: 3px;
+    padding: 14px 14px 12px;
+    box-shadow: 3px 5px 14px rgba(60,30,5,0.22);
     pointer-events: all;
     min-width: 160px;
     cursor: move;
@@ -12,102 +12,110 @@
 }
 
 .widget-title {
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #c4607a;
-    margin-bottom: 10px;
-    font-style: italic;
+    font-family: 'Caveat', cursive;
+    font-size: 15px;
+    color: #7a4e18;
+    margin-bottom: 8px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #d4b060;
 }
 
 .widget-close {
     position: absolute;
-    top: 6px; right: 8px;
+    top: 8px; right: 10px;
     background: none;
-    border: none;
-    font-size: 14px;
+    border: 1px solid #c09040;
+    border-radius: 2px;
+    width: 16px; height: 16px;
+    font-size: 9px;
     cursor: pointer;
-    color: #e8a0b8;
-    line-height: 1;
-    transition: color 0.15s;
-}
-.widget-close:hover { color: #c4607a; }
-
-/* Pomodoro */
-.pomodoro-time {
-    font-size: 36px;
+    color: #8a5820;
+    line-height: 14px;
     text-align: center;
-    color: #7a2040;
+}
+.widget-close:hover { background: #e8c870; }
+
+/* pomodoro */
+.pomodoro-time {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    text-align: center;
+    color: #5a3010;
     letter-spacing: 2px;
-    margin: 6px 0;
+    margin: 4px 0 2px;
 }
 
-.pomodoro-controls { display: flex; gap: 8px; justify-content: center; margin-top: 8px; }
+.pomodoro-controls { display: flex; gap: 6px; justify-content: center; margin-top: 8px; }
 
 .pomodoro-controls button {
-    padding: 5px 14px;
-    border: 1px solid #e8a0b8;
-    border-radius: 999px;
-    background: linear-gradient(145deg, #ffc8dc, #f4a0b8);
-    color: #7a2040;
-    font-size: 12px;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-.pomodoro-controls button:hover { background: linear-gradient(145deg, #ffb0cc, #e890a8); }
-
-/* Note */
-.note-area {
-    width: 180px;
-    height: 100px;
-    border: 1px solid #f0b8cc;
-    border-radius: 8px;
-    background: #fff8fa;
-    padding: 6px;
-    font-family: Georgia, serif;
-    font-size: 13px;
-    resize: none;
-    color: #7a2040;
-}
-
-/* Clock */
-.clock-time {
-    font-size: 32px;
-    text-align: center;
-    color: #7a2040;
-    letter-spacing: 3px;
-}
-.clock-date {
+    padding: 5px 12px;
+    border: 1px solid #9a7030;
+    border-radius: 3px;
+    background: #d4b06a;
+    color: #3a2008;
+    font-family: 'Lato', sans-serif;
     font-size: 11px;
-    text-align: center;
-    color: #c4607a;
-    margin-top: 4px;
-    letter-spacing: 1px;
-    font-style: italic;
+    cursor: pointer;
 }
+.pomodoro-controls button:hover { background: #c09848; }
 
-.music-controls { display: flex; gap: 10px; align-items: center; justify-content: center; }
+/* note */
+.note-area {
+    width: 190px;
+    height: 110px;
+    border: 1px solid #c8a050;
+    border-radius: 2px;
+    background:
+        repeating-linear-gradient(transparent, transparent 23px, #e8d090 23px, #e8d090 24px),
+        #fefae8;
+    padding: 4px 8px;
+    font-family: 'Caveat', cursive;
+    font-size: 15px;
+    resize: none;
+    color: #3a2008;
+    outline: none;
+    line-height: 24px;
+}
+.note-area::placeholder { color: #b09050; }
+
+/* music */
+.music-controls { display: flex; gap: 8px; align-items: center; justify-content: center; margin: 6px 0 4px; }
 
 .music-controls button {
     background: none;
-    border: none;
-    font-size: 20px;
+    border: 1px solid #b08840;
+    border-radius: 3px;
+    padding: 4px 8px;
+    font-size: 13px;
     cursor: pointer;
-    transition: transform 0.15s;
+    color: #5a3010;
 }
-.music-controls button:hover { transform: scale(1.2); }
+.music-controls button:hover { background: #e8d090; }
 
 .music-label {
-    font-size: 11px;
+    font-family: 'Caveat', cursive;
+    font-size: 14px;
     text-align: center;
-    color: #c4607a;
-    margin-top: 6px;
-    letter-spacing: 1px;
-    font-style: italic;
+    color: #7a5020;
+    margin-top: 2px;
 }
 
-.music-progress {
-    width: 100%;
-    margin-top: 8px;
-    accent-color: #e8a0b8;
+.music-progress { width: 100%; margin-top: 8px; accent-color: #9a7030; }
+
+/* wall clock */
+#wall-clock {
+    position: absolute;
+    top: 20px;
+    right: 160px;
+    cursor: move;
+    user-select: none;
+    filter: drop-shadow(3px 5px 8px rgba(0,0,0,0.3));
+}
+
+#wall-clock-date {
+    font-family: 'Caveat', cursive;
+    font-size: 11px;
+    color: #7a5020;
+    text-align: center;
+    margin-top: 3px;
 }
